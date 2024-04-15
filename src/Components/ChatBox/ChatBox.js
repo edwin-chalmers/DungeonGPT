@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { EnterButton, StyledChatBox } from "./ChatBox.styled";
-import { getResponse } from "../../apiCalls"
+import { EnterButton, StyledChatBox } from "./ChatBox.styled.js";
+import { getResponse } from "../../apiCalls.js"
 
 export default function ChatBox({ onNewMessage }) {
   const [text, setText] = useState('');

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyledChatLog } from "./ChatLog.styled";
+import { StyledChatLog } from "./ChatLog.styled.js";
 
 export default function ChatLog({ messages }) {
 console.log("🚀 ~ ChatLog ~ messages:", messages)

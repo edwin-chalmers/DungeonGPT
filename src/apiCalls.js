@@ -1,4 +1,3 @@
-
 export const getResponse = async (inputText) => {
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -26,3 +25,21 @@ export const getResponse = async (inputText) => {
     }
   };
   
+  // export const getResponse = async (inputText) => {
+  //   try {
+  //     const response = await fetch('/chat', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ inputText })
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //     const data = await response.json();
+  //     return data;
+  //   } catch (error) {
+  //     console.error('Error posting chat message:', error);
+  //   }
+  // };

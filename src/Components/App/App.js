@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { StyledApp, Nav} from "./App.styled";
-import ChatLog from "../ChatLog/ChatLog";
-import ChatBox from "../ChatBox/ChatBox";
-import { getResponse } from "../../apiCalls";
+import { StyledApp, Nav} from "./App.styled.js";
+import ChatLog from "../ChatLog/ChatLog.js";
+import ChatBox from "../ChatBox/ChatBox.js";
+
 
 
 function App() {

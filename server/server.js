@@ -11,6 +11,7 @@ app.use(express.json()); // Middleware to parse JSON bodies
 app.post('/chat', async (req, res) => {
     const inputText = req.body.inputText; // Get the input text from the client request
     try {
+        console.log('process.env.OPENAI_API_KEY',process.env.OPENAI_API_KEY)
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {

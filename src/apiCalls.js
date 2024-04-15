@@ -1,10 +1,11 @@
+
 export const getResponse = async (inputText) => {
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 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`
+          'Authorization': `Bearer `
         },
         body: JSON.stringify({
           "model": "gpt-3.5-turbo", // or another model version

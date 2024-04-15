@@ -29,11 +29,11 @@ app.post('/chat', async (req, res) => {
         }
         const data = await response.json();
         console.log('apiCalls', data);
-        res.json(data); // Send the data back to the client
+        res.json(data); 
       
     } catch (error) {
         console.error('Error calling OpenAI API:', error);
-        res.status(500).json({ error: error.message }); // Send back a 500 internal server error status
+        res.status(500).json({ error: error.message }); 
     }
 });
 

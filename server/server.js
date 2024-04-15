@@ -19,7 +19,7 @@ app.post('/chat', async (req, res) => {
                 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` // Use the API key from environment variable
             },
             body: JSON.stringify({
-                "model": "gpt-3.5-turbo", // or another model version
+                "model": "gpt-3.5-turbo", 
                 "messages": [{ "role": "user", "content": inputText }],
                 "temperature": 0.7
             })

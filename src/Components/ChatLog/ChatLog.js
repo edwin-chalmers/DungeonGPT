@@ -1,18 +1,19 @@
-import { StyledChatLog } from "./ChatLog.styled"
+import { useState } from "react";
+import { StyledChatLog } from "./ChatLog.styled";
 
-export default function ChatLog() {
-    
-    return (
-        <StyledChatLog>
-        <div className="chat-message">
-          <img src="/assets/fire_icon.svg"/>
-          <div className="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-        </div>
-        <div className="chat-message">
-          <img src="/assets/fire_icon.svg"/>
-          <div className="message">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-        </div>
-      </StyledChatLog>
-    )
+export default function ChatLog({ messages }) {
+console.log("🚀 ~ ChatLog ~ messages:", messages)
 
+  
+  return (
+    <StyledChatLog>
+      {messages.map((msg, index) => (
+        <div key={index} className="chat-message">
+          <img src={msg.type === "response" ? "/assets/fire_icon.svg" : "/assets/person_icon.svg"} alt="" />
+          <div className="message">{msg.content}</div> {/* Ensure this is a string */}
+        </div>
+      ))}
+    </StyledChatLog>
+  );
 }
+

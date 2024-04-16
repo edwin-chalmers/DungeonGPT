@@ -12,6 +12,13 @@ export default function ChatBox({ handleNewMessage, messages }) {
     event.target.style.height = `${event.target.scrollHeight}px`
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      event.preventDefault(); // Prevents the default action of inserting a new line
+      sendMessage();
+    }
+  };
+
   const sendMessage = async () => {
     if (text.trim()) {
       try {
@@ -38,6 +45,7 @@ export default function ChatBox({ handleNewMessage, messages }) {
         onInput={autoGrowTextArea}
         value={text}
         maxLength="988"
+        onKeyPress={handleKeyPress}
       ></textarea>
       <EnterButton onClick={sendMessage} disabled={!text.trim()}>{`>>`}</EnterButton>
     </StyledChatBox>

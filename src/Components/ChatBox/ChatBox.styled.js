@@ -24,7 +24,7 @@ export const StyledChatBox = styled.div`
         color: var(--main-color);
         resize: none;
         outline: none;
-        padding: 12px 0 0 0;
+        padding: 13px 0 0 0;
     }
 
     &:focus-within {

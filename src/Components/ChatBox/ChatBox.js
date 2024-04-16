@@ -1,41 +1,36 @@
-import { useState } from "react";
-import { EnterButton, StyledChatBox } from "./ChatBox.styled.js";
+import { useState } from "react"
+import { EnterButton, StyledChatBox } from "./ChatBox.styled.js"
 import { getResponse } from "../../apiCalls.js"
 
-export default function ChatBox({ onNewMessage }) {
-  const [text, setText] = useState('');
+export default function ChatBox({ handleNewMessage, messages }) {
+  console.log("🚀 ~ ChatBox ~ messages:", messages)
+  const [text, setText] = useState('')
 
   const autoGrowTextArea = (event) => {
-    setText(event.target.value);
-    event.target.style.height = 'auto';
-    event.target.style.height = `${event.target.scrollHeight}px`;
+    setText(event.target.value)
+    event.target.style.height = 'auto'
+    event.target.style.height = `${event.target.scrollHeight}px`
   };
 
   const sendMessage = async () => {
     if (text.trim()) {
       try {
-        // Add user message to the messages state before getting the response
-        onNewMessage({ content: text, type: "user" });
+        handleNewMessage({ content: text, role: "user" })
+        const apiResponse = await getResponse(text)
   
-        // Use getResponse function to get the API response
-        const apiResponse = await getResponse(text);
-  
-        // Check if the API response is not null
         if (apiResponse) {
           console.log("🚀 ~ sendMessage ~ apiResponse:", apiResponse)
-          // Add API response to the messages state
-          onNewMessage({ content: apiResponse.choices[0].message.content, type: "response" });
-        } else {
-          // Handle null response here, e.g., show an error message to the user
-        }
+          handleNewMessage({ content: apiResponse.choices[0].message.content, role: "response" })
+        } 
   
-        setText(''); // Clear the text area
+        setText('')
+
       } catch (error) {
-        console.error('Failed to send message:', error);
-        // Optionally, handle the error for the user interface
+        console.error('Failed to send message:', error)
+
       }
     }
-  };
+  }
 
   return (
     <StyledChatBox>

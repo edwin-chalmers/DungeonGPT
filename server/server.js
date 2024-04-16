@@ -1,7 +1,7 @@
 import express from 'express'
 import fetch from 'node-fetch';
 import 'dotenv/config'
-
+import trainingPrompt from './trainingPrompt.js'
 
 const app = express();
 
@@ -10,8 +10,12 @@ app.use(express.json()); // Middleware to parse JSON bodies
 // POST route to handle chat requests
 app.post('/chat', async (req, res) => {
     const inputText = req.body.inputText; // Get the input text from the client request
+    const messages = [
+        { "role": "system", "content": trainingPrompt },
+        { "role": "user", "content": inputText } 
+    ]
+
     try {
-        console.log('process.env.OPENAI_API_KEY',process.env.OPENAI_API_KEY)
         const response = await fetch('https://api.openai.com/v1/chat/completions', {
             method: 'POST',
             headers: {
@@ -19,9 +23,12 @@ app.post('/chat', async (req, res) => {
                 'Authorization': `Bearer ${process.env.OPENAI_API_KEY}` // Use the API key from environment variable
             },
             body: JSON.stringify({
-                "model": "gpt-3.5-turbo", 
-                "messages": [{ "role": "user", "content": inputText }],
-                "temperature": 0.7
+                "model": "gpt-4-turbo", 
+                "messages": messages,
+                "max_tokens": 500,
+                "top_p": 1,
+                "temperature": 1
+
             })
         });
         if (!response.ok) {

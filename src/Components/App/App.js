@@ -19,7 +19,7 @@ function App() {
     setMessages(prevMessages => [...prevMessages, newMessage])
   };
 
-  function loseHealth() {
+  function loseHealthTest() {
     setHealth(health.slice(0,-1))
   }
 
@@ -32,7 +32,7 @@ function App() {
   }
 
   useEffect(() => {
-    health.length === 0 && handleNewMessage({ content: "You Died", role: "assistant" })
+    health.length === 0 && handleNewMessage({ content: "You Died <button onClick={window.location.reload()}>Reset Page</button>", role: "assistant" })
   }, [health])
 
 
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <StyledApp className="App">
-      <Nav health={health} loseHealth={loseHealth}/>
+      <Nav health={health} loseHealthTest={loseHealthTest}/>
       <ChatLog messages={messages} />
       <ChatBox handleNewMessage={handleNewMessage} messages={messages} checkForDamage={checkForDamage}/>
     </StyledApp>

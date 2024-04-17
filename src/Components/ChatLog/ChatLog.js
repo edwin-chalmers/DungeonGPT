@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { StyledChatLog } from "./ChatLog.styled.js";
 import showdown from 'showdown';
 
-export default function ChatLog({ messages }) {
+export default function ChatLog({ messages, }) {
   const converter = new showdown.Converter()
   const endOfMessagesRef = useRef(null)
 

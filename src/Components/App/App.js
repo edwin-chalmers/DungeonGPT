@@ -18,8 +18,6 @@ function App() {
     setHealth(health.slice(0,-1))
   }
 
-  console.log('health.slice(0,1)',health)
-
   return (
     <StyledApp className="App">
       <Nav health={health} loseHealth={loseHealth}/>

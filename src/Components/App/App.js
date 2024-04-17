@@ -13,6 +13,7 @@ function App() {
 
   const [messages, setMessages] = useState([])
   const [health, setHealth] = useState(initialHealth);
+  console.log("🚀 ~ App ~ health:", health.length)
 
   const handleNewMessage = (newMessage) => {
     setMessages(prevMessages => [...prevMessages, newMessage])
@@ -23,14 +24,23 @@ function App() {
   }
 
   function checkForDamage(message) {
-    message.toLowerCase().includes("you lose 1 health") && loseHealth()
+    damagePlayer(message)
   }
+
+  function damagePlayer(message) {
+    message.toLowerCase().includes("you lose 1 health") && setHealth(health.slice(0,-1))
+  }
+
+  useEffect(() => {
+    health.length === 0 && handleNewMessage({ content: "You Died", role: "assistant" })
+  }, [health])
+
 
   console.log("🚀 ~ ChatBox ~ messages:", messages)
 
   return (
     <StyledApp className="App">
-      <Nav health={health} />
+      <Nav health={health} loseHealth={loseHealth}/>
       <ChatLog messages={messages} />
       <ChatBox handleNewMessage={handleNewMessage} messages={messages} checkForDamage={checkForDamage}/>
     </StyledApp>

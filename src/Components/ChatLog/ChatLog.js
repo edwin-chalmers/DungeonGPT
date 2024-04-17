@@ -1,15 +1,14 @@
-import { useState, useRef, useEffect } from "react"
-import { StyledChatLog } from "./ChatLog.styled.js"
-import showdown from 'showdown'
+import { useState, useRef, useEffect } from "react";
+import { StyledChatLog } from "./ChatLog.styled.js";
+import showdown from 'showdown';
 
 export default function ChatLog({ messages }) {
-  console.log("🚀 ~ ChatLog ~ messages:", messages)
   const converter = new showdown.Converter()
   const endOfMessagesRef = useRef(null)
 
   useEffect(() => {
     if (endOfMessagesRef.current) {
-      endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" })
+      endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
   

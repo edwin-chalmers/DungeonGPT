@@ -20,4 +20,8 @@ export const StyledNav = styled.nav`
     img {
         width: 20px;
     }
+
+    .health {
+        margin: 10px;
+    }
 `

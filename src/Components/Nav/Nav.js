@@ -1,10 +1,10 @@
 import { StyledNav } from "./Nav.styled.js"
 
-export default function Nav({ health, loseHealth }) {
+export default function Nav({ health, loseHealthTest }) {
     return (
         <StyledNav>
-            <h1 onClick={loseHealth}>DungeonGPT</h1>
-            <div>{health}</div>
+            <h1 onClick={loseHealthTest}>DungeonGPT</h1>
+            <div className="health" >{health}</div>
         </StyledNav>
     )
 }

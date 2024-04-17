@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const StyledChatBox = styled.div`
     width: 800px;
     min-height: 50px;
@@ -30,10 +29,6 @@ export const StyledChatBox = styled.div`
     &:focus-within {
     border-color: var(--main-color);
     }
-`
-
-export const ChatMessage = styled.div`
-
 `
 
 export const EnterButton = styled.button`

@@ -3,8 +3,7 @@ import { EnterButton, StyledChatBox } from "./ChatBox.styled.js"
 import { getResponse } from "../../apiCalls.js"
 import trainingPrompt from "../../trainingPrompt.js"
 
-export default function ChatBox({ handleNewMessage, messages }) {
-  console.log("🚀 ~ ChatBox ~ messages:", messages)
+export default function ChatBox({ handleNewMessage, messages, checkForDamage }) {
   const [text, setText] = useState('')
 
   const autoGrowTextArea = (event) => {
@@ -15,8 +14,8 @@ export default function ChatBox({ handleNewMessage, messages }) {
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
-      event.preventDefault(); // Prevents the default action of inserting a new line
-      sendMessage();
+      event.preventDefault()
+      sendMessage()
     }
   };
   const sendMessage = async () => {
@@ -28,6 +27,7 @@ export default function ChatBox({ handleNewMessage, messages }) {
     
         if (apiResponse) {
           handleNewMessage({ "content": apiResponse.choices[0].message.content, "role": "assistant" })
+          checkForDamage(apiResponse.choices[0].message.content)
         } 
   
       } catch (error) {
@@ -35,6 +35,8 @@ export default function ChatBox({ handleNewMessage, messages }) {
       }
     }
   }
+
+
 
   return (
     <StyledChatBox>

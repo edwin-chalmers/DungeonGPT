@@ -4,7 +4,7 @@ export default function Nav({ health, loseHealth }) {
     return (
         <StyledNav>
             <h1 onClick={loseHealth}>DungeonGPT</h1>
-            <div>{health}</div>
+            <div className="health" >{health}</div>
         </StyledNav>
     )
 }

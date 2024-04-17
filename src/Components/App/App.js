@@ -32,7 +32,7 @@ function App() {
   }
 
   useEffect(() => {
-    health.length === 0 && handleNewMessage({ content: "You Died <button onClick={window.location.reload()}>Reset Page</button>", role: "assistant" })
+    health.length === 0 && handleNewMessage({ content: "You Died <button onClick={window.location.reload()}>New Game</button>", role: "assistant" })
   }, [health])
 
 

@@ -20,8 +20,8 @@ export default function ChatLog({ messages }) {
         return (
           <div key={index} className="chat-message">
             <img 
-              src={msg.role === "response" ? "/assets/fire_icon.svg" : "/assets/person_icon.svg"} 
-              alt={msg.role === "response" ? "DM Icon" : "Player Icon"} 
+              src={msg.role === "assistant" ? "/assets/fire_icon.svg" : "/assets/person_icon.svg"} 
+              alt={msg.role === "assistant" ? "DM Icon" : "Player Icon"} 
             />
             {/* Use dangerouslySetInnerHTML to set the HTML content */}
             <div className="message" dangerouslySetInnerHTML={{ __html: htmlContent }}></div>

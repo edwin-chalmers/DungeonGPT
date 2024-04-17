@@ -20,7 +20,7 @@ export const StyledApp = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     color: #8BE8D7;
 `
 
@@ -29,18 +29,5 @@ export const Nav = styled.nav`
     height: 50px;
     font-weight: 800;
     ${centerElements}
-`
-
-export const PlayerInfo = styled.div`
-    top: 50%;
-    left: 10%;
-
-    width: 250px;
-    height: 250px;
-    border: 1px solid red;
-    box-sizing: border-box;
-
-    text-align: right;
-    position: absolute;
 `
 

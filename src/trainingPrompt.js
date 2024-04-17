@@ -62,6 +62,7 @@ As you move deeper into the forest, the path splits into two. To the left, you h
 
 Which path do you choose to follow: the one leading towards the rushing water or the one where the dim light beckons?
 
+You should always reply to the user message “%%damage” with “You lose 1 health.” 
 `
 
 export default trainingPrompt

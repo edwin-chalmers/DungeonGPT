@@ -25,21 +25,22 @@
 //     }
 //   };
   
-  export const getResponse = async (inputText) => {
-    try {
-      const response = await fetch('/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ inputText })
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error posting chat message:', error);
+export const getResponse = async (messages) => {
+  console.log("🚀 ~ getResponse ~ messages:", messages)
+  try {
+    const response = await fetch('/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ messages })  // Sending the array of messages
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error posting chat message:', error);
+  }
+};

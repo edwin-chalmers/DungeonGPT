@@ -7,15 +7,17 @@ export const StyledChatLog = styled.div`
 
     /* border: 1px solid red;
     box-sizing: border-box; */
-    width: 820px;
+    width: 100%;
+    max-width: 820px;
     height: 70vh;
     flex-grow: 1;
     overflow-y: auto;
-    padding: 0 25px;
+    /* padding: 0 25px; */
 
     .chat-message {
         display: flex;
         align-items: flex-start;
+        padding-right: 20px;
     }
 
     img {
@@ -30,9 +32,11 @@ export const StyledChatLog = styled.div`
         border-radius: 6px;
         color: var(--background-color);
         background-color: var(--secondary-color);
-        
+
         &:hover {
             background-color: var(--main-color);
         }
     }
+
+
 `

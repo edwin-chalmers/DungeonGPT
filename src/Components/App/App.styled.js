@@ -11,8 +11,8 @@ export const StyledApp = styled.div`
     --secondary-color: #39615A;
     --background-color: #283134;
 
-
-    width: 100%;
+    width: 100vw;
+    max-width: 100%;
     min-height: 100vh;
     background-color: var(--background-color);
     margin: 0;
@@ -20,14 +20,11 @@ export const StyledApp = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     color: #8BE8D7;
-`
 
-export const Nav = styled.nav`
-    width: 800px;
-    height: 50px;
-    font-weight: 800;
-    ${centerElements}
+    /* @media (max-width: 768px) {
+        min-width: 600px;
+    } */
 `
 

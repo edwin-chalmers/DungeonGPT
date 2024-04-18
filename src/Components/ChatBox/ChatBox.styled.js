@@ -8,7 +8,7 @@ export const StyledChatBox = styled.div`
     border: 1px solid var(--secondary-color);
     box-sizing: border-box;
     background-color: rgba(0,0,0,0);
-    margin-bottom: 20px;
+    margin-bottom: 20px ;
     border-radius: 15px;
     padding-left: 10px;
     

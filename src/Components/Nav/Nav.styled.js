@@ -9,12 +9,13 @@ const centerElements = () => `
 export const StyledNav = styled.nav`
     ${centerElements}
     flex-direction: column;
-    width: 800px;
+    width: 100%;
 
     font-weight: 800;
 
     h1 {
         margin: 10px 0 5px 0;
+        font-size: large;
     }
 
     img {

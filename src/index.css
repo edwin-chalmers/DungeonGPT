@@ -5,16 +5,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,0,0,0.5);
+
+  background-color: #283134;
+
+
+  /* display: flex;
+  justify-content: center; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-body {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0,0,0,0.5);
 }
 
 ::-webkit-scrollbar {
@@ -29,3 +33,4 @@ body {
   background: #39615A;
   border-radius: 6px;
 }
+

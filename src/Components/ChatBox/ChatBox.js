@@ -1,4 +1,5 @@
 import { useState } from "react"
+import PropTypes from "prop-types"
 import { EnterButton, StyledChatBox } from "./ChatBox.styled.js"
 import { getResponse } from "../../apiCalls.js"
 import trainingPrompt from "../../trainingPrompt.js"
@@ -49,4 +50,13 @@ export default function ChatBox({ handleNewMessage, messages, checkForDamage }) 
       <EnterButton onClick={sendMessage} disabled={!text.trim()}>{`>>`}</EnterButton>
     </StyledChatBox>
   );
+}
+
+ChatBox.propTypes = {
+  handleNewMessage: PropTypes.func.isRequired,
+  checkForDamage: PropTypes.func.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+  })).isRequired,
 }

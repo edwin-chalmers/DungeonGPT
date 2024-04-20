@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import PropTypes from "prop-types"
 import { StyledChatLog } from "./ChatLog.styled.js";
 import showdown from 'showdown';
 
@@ -29,4 +30,11 @@ export default function ChatLog({ messages, }) {
       <div ref={endOfMessagesRef} />
     </StyledChatLog>
   );
+}
+
+ChatLog.propTypes = {
+  messages: PropTypes.arrayOf(PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+  })).isRequired,
 }

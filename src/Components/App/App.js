@@ -13,7 +13,7 @@ function App() {
 
   const [messages, setMessages] = useState([])
   const [health, setHealth] = useState(initialHealth);
-  console.log("🚀 ~ App ~ health:", health.length)
+  console.log("🚀 ~ App ~ health:", health)
 
   const handleNewMessage = (newMessage) => {
     setMessages(prevMessages => [...prevMessages, newMessage])
@@ -29,6 +29,7 @@ function App() {
 
   function damagePlayer(message) {
     message.toLowerCase().includes("you lose 1 health") && setHealth(health.slice(0,-1))
+    // Add dynamic code to subtract larger then 1 health
   }
 
   useEffect(() => {

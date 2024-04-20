@@ -12,7 +12,6 @@ export default function GamePage() {
   const [messages, setMessages] = useState([])
   const [health, setHealth] = useState(initialHealth)
   const [error, setError] = useState(false)
-  console.log("🚀 ~ App ~ health:", health)
 
   const handleNewMessage = (newMessage) => {
     setMessages(prevMessages => [...prevMessages, newMessage])

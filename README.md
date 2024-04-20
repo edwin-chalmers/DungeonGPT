@@ -1,7 +1,7 @@
 # Destination: Banana | Group Project
 DungeonGPT is a choose your own (CYO) adventure game built around the ChatGPT API.
 
-[Try it here!]()
+[Try it here!](https://dungeon-gpt-sandy.vercel.app/)
 
 ### Preview
 <img width="1431" alt="image" src="https://github.com/edwin-chalmers/DungeonGPT/assets/149631946/479708a3-569f-452d-96b3-45ad43cdc37f">

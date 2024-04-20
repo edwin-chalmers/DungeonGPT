@@ -4,7 +4,7 @@ import { EnterButton, StyledChatBox } from "./ChatBox.styled.js"
 import { getResponse } from "../../apiCalls.js"
 import trainingPrompt from "../../trainingPrompt.js"
 
-export default function ChatBox({ handleNewMessage, messages, checkForDamage, setError }) {
+export default function ChatBox({ handleNewMessage, messages, checkForDamage, setError, health }) {
   const [text, setText] = useState('')
 
   const autoGrowTextArea = (event) => {
@@ -51,14 +51,16 @@ export default function ChatBox({ handleNewMessage, messages, checkForDamage, se
         value={text}
         maxLength="988"
         onKeyPress={handleKeyPress}
-        placeholder={!messages.length && `Type "Start" to begin`}
+        placeholder={!messages.length ? `Type "Start" to begin` : ''}
+        disabled={health.length === 0}
       ></textarea>
-      <EnterButton onClick={sendMessage} disabled={!text.trim()}>{`>>`}</EnterButton>
+      <EnterButton onClick={sendMessage} disabled={!text.trim() || health.length === 0}>{`>>`}</EnterButton>
     </StyledChatBox>
   );
 }
 
 ChatBox.propTypes = {
+  health: PropTypes.arrayOf(PropTypes.element).isRequired,
   handleNewMessage: PropTypes.func.isRequired,
   checkForDamage: PropTypes.func.isRequired,
   setError: PropTypes.func.isRequired,

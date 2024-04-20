@@ -38,6 +38,10 @@ export default function GamePage() {
     error && handleNewMessage({ content: "Alas, a slight enchantment has disrupted our realm. Please refresh the page or return shortly to continue your journey.", role: "assistant" })
   }, [error])
 
+  useEffect(() => {
+    messages.length >= 50 && setMessages(messages.splice(0, 2))
+  }, [messages])
+
   console.log("🚀 ~ ChatBox ~ messages:", messages)
 
   return (
@@ -49,6 +53,7 @@ export default function GamePage() {
         messages={messages} 
         checkForDamage={checkForDamage}
         setError={setError}
+        health={health}
       />
     </StyledGamePage>
   );

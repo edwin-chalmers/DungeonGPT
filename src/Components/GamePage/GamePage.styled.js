@@ -6,7 +6,7 @@ const centerElements = () => `
     align-items: center;
 `
 
-export const StyledApp = styled.div`
+export const StyledGamePage = styled.div`
     --main-color: #8BE8D7;
     --secondary-color: #39615A;
     --background-color: #283134;

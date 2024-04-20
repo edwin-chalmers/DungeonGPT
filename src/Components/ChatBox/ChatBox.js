@@ -28,6 +28,7 @@ export default function ChatBox({ handleNewMessage, messages, checkForDamage, se
         const apiResponse = await getResponse([ ...messages, { "role": "system", "content": trainingPrompt }, { "content": text, "role": "user" }])
     
         if (apiResponse) {
+          console.log("🚀 ~ sendMessage ~ apiResponse:", apiResponse)
           handleNewMessage({ "content": apiResponse.choices[0].message.content, "role": "assistant" })
           checkForDamage(apiResponse.choices[0].message.content)
         } 

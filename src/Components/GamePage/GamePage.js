@@ -35,9 +35,9 @@ export default function GamePage() {
     health.length === 0 && handleNewMessage({ content: "You Died <button onClick={window.location.reload()}>New Game</button>", role: "assistant" })
   }, [health])
 
-  useEffect(() => [
+  useEffect(() => {
     error && handleNewMessage({ content: "Alas, a slight enchantment has disrupted our realm. Please refresh the page or return shortly to continue your journey.", role: "assistant" })
-  ], error)
+  }, [error])
 
   console.log("🚀 ~ ChatBox ~ messages:", messages)
 

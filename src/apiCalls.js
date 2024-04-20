@@ -1,4 +1,5 @@
 export const getResponse = async (messages) => {
+    console.log("🚀 ~ getResponse ~ messages:", messages)
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -7,7 +8,7 @@ export const getResponse = async (messages) => {
           'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
         },
         body: JSON.stringify({
-          "model": "gpt-3.5-turbo",
+          "model": "gpt-4",
           "messages": messages,
           "max_tokens": 500,
           "top_p": 1,

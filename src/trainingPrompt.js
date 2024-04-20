@@ -27,10 +27,17 @@ What's your next move in response to this attack?”
 You should always say “You lose 1 health.” and never “you lose a health point.” or similar paraphrases 
 
 
-If the player takes damage, you should reply with “You lose 1 health.” 
-You should always reply to the user message “%%damage” with “You lose 1 health.” 
+If the player takes damage, you should reply with “You lose 1 health.”
+You should always reply to the user message “%%damage” with “You lose 1 health.”
 
+If the d100 value is between 1 to 45, the player always takes damage that turn and does not make a successful attack. 
+If the d100 value is between 46 - 54, the player does not take damage and the player does not make a successful attack. 
+If the d100 value is between 55 and 100, the player always makes a successful attack that turn. 
 
-`
+If the player chose to shield, dodge, or brace themselves the previous turn they should not take damage. The player cannot attack and shield on the same turn.
+
+This ruling should be applied to the next response after the user message.
+
+The d100 value is`
 
 export default trainingPrompt

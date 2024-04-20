@@ -4,15 +4,14 @@ import ChatLog from "../ChatLog/ChatLog.js"
 import ChatBox from "../ChatBox/ChatBox.js"
 import Nav from "../Nav/Nav.js"
 
-
-
 export default function GamePage() {
   const initialHealth = Array.from({ length: 5 }, (_, i) => (
     <img key={i} src="/assets/heart_icon.svg" alt="heart container" />
   ))
 
   const [messages, setMessages] = useState([])
-  const [health, setHealth] = useState(initialHealth);
+  const [health, setHealth] = useState(initialHealth)
+  const [error, setError] = useState(false)
   console.log("🚀 ~ App ~ health:", health)
 
   const handleNewMessage = (newMessage) => {
@@ -36,6 +35,9 @@ export default function GamePage() {
     health.length === 0 && handleNewMessage({ content: "You Died <button onClick={window.location.reload()}>New Game</button>", role: "assistant" })
   }, [health])
 
+  useEffect(() => [
+    error && handleNewMessage({ content: "Alas, a slight enchantment has disrupted our realm. Please refresh the page or return shortly to continue your journey.", role: "assistant" })
+  ], error)
 
   console.log("🚀 ~ ChatBox ~ messages:", messages)
 
@@ -43,7 +45,12 @@ export default function GamePage() {
     <StyledGamePage className="App">
       <Nav health={health} loseHealthTest={loseHealthTest}/>
       <ChatLog messages={messages} />
-      <ChatBox handleNewMessage={handleNewMessage} messages={messages} checkForDamage={checkForDamage}/>
+      <ChatBox 
+        handleNewMessage={handleNewMessage} 
+        messages={messages} 
+        checkForDamage={checkForDamage}
+        setError={setError}
+      />
     </StyledGamePage>
   );
 }

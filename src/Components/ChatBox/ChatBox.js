@@ -4,27 +4,28 @@ import { EnterButton, StyledChatBox } from "./ChatBox.styled.js"
 import { getResponse } from "../../apiCalls.js"
 import trainingPrompt from "../../trainingPrompt.js"
 
-export default function ChatBox({ handleNewMessage, messages, checkForDamage }) {
+export default function ChatBox({ handleNewMessage, messages, checkForDamage, setError }) {
   const [text, setText] = useState('')
 
   const autoGrowTextArea = (event) => {
     setText(event.target.value)
     event.target.style.height = 'auto'
     event.target.style.height = `${event.target.scrollHeight}px`
-  };
+  }
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault()
       sendMessage()
     }
-  };
+  }
+
   const sendMessage = async () => {
     if (text.trim()) {
       try {
         handleNewMessage({ content: text, role: "user" })
         setText('')
-        const apiResponse = await getResponse([ ...messages, { "role": "system", "content": trainingPrompt }, { "content": text, "role": "user" }]);
+        const apiResponse = await getResponse([ ...messages, { "role": "system", "content": trainingPrompt }, { "content": text, "role": "user" }])
     
         if (apiResponse) {
           handleNewMessage({ "content": apiResponse.choices[0].message.content, "role": "assistant" })
@@ -32,12 +33,11 @@ export default function ChatBox({ handleNewMessage, messages, checkForDamage }) 
         } 
   
       } catch (error) {
+        setError(true)
         console.error('Failed to send message:', error)
       }
     }
   }
-
-
 
   return (
     <StyledChatBox>
@@ -46,6 +46,7 @@ export default function ChatBox({ handleNewMessage, messages, checkForDamage }) 
         value={text}
         maxLength="988"
         onKeyPress={handleKeyPress}
+        placeholder={!messages.length && `Type "Start" to begin`}
       ></textarea>
       <EnterButton onClick={sendMessage} disabled={!text.trim()}>{`>>`}</EnterButton>
     </StyledChatBox>
@@ -55,6 +56,7 @@ export default function ChatBox({ handleNewMessage, messages, checkForDamage }) 
 ChatBox.propTypes = {
   handleNewMessage: PropTypes.func.isRequired,
   checkForDamage: PropTypes.func.isRequired,
+  setError: PropTypes.func.isRequired,
   messages: PropTypes.arrayOf(PropTypes.shape({
     content: PropTypes.string.isRequired,
     role: PropTypes.string.isRequired,

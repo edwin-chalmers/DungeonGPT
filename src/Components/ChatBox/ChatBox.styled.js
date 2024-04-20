@@ -24,11 +24,15 @@ export const StyledChatBox = styled.div`
         color: var(--main-color);
         resize: none;
         outline: none;
-        padding: 13px 0 0 0;
+        padding: 14px 0 0 10px;
+    }
+
+    ::placeholder {
+        color: var(--secondary-color);
     }
 
     &:focus-within {
-    border-color: var(--main-color);
+        border-color: var(--main-color);
     }
 
 `

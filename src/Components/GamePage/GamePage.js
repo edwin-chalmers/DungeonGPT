@@ -42,7 +42,6 @@ export default function GamePage() {
     messages.length >= 50 && setMessages(messages.splice(0, 2))
   }, [messages])
 
-  console.log("🚀 ~ ChatBox ~ messages:", messages)
 
   return (
     <StyledGamePage className="App">

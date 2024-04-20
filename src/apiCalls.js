@@ -1,5 +1,4 @@
 export const getResponse = async (messages) => {
-    console.log("🚀 ~ getResponse ~ messages:", messages)
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -19,7 +18,6 @@ export const getResponse = async (messages) => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log('apiCalls', data); // Use the stored data for logging or other purposes
       return data;
       
     } catch (error) {
